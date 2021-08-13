@@ -15,6 +15,7 @@ namespace MathQuiz
         {
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), DocName);
             using WordprocessingDocument wordDoc = WordprocessingDocument.Create(path, WordprocessingDocumentType.Document);
+
             MainDocumentPart mainPart = wordDoc.AddMainDocumentPart();
             mainPart.Document = new Document();
             Body docBody = mainPart.Document.AppendChild(new Body());
@@ -24,11 +25,12 @@ namespace MathQuiz
                 ));
             for (int i = 0; i < equations.Count;)
             {
-                Paragraph line = docBody.AppendChild(new Paragraph());
-                line.AppendChild(new ParagraphProperties(new SpacingBetweenLines { Before = "200", After = "200" }));
+                var para = docBody.AppendChild(new Paragraph());
+                var pp = new ParagraphProperties(new SpacingBetweenLines { Line = "360", LineRule = LineSpacingRuleValues.Auto, After = "0" });
+                para.Append(pp);
                 for (int j = 0; j < 2 && i < equations.Count; j++)
                 {
-                    Run run = line.AppendChild(new Run());
+                    Run run = para.AppendChild(new Run());
                     run.AppendChild(new RunProperties(
                         new RunFonts() { Ascii = "黑体", HighAnsi = "黑体", EastAsia = "黑体" },
                         new FontSize() { Val = "36" }

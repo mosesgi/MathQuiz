@@ -31,7 +31,7 @@ namespace MathQuiz
                     continue;
                 }
 
-                string key = $"{first}__{second}";
+                string key = first > second ? $"{second}_{first}" : $"{first}_{second}";
                 if (set.Contains(key))
                 {
                     continue;
