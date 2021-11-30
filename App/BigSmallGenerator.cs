@@ -37,7 +37,7 @@ namespace MathQuiz
                     continue;
                 }
                 set.Add(key);
-                result.Add($"{first,2} ___ {second,2}\t\t\t\t\t\t");
+                result.Add($"{first,2} ___ {second,2}");
                 i++;
             }
         }
